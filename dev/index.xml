@@ -1,0 +1,11 @@
+<krpano>
+	<include url="arrows.xml" />
+	<view fov="90" fovmin="60" fovmax="120" />
+	<image>
+		<cubestrip url="../plugin-page/example/pano.jpg" />
+	</image>
+	<layer name="connections">
+		<connection name="scene2" hdir="25.0" />
+		<connection name="scene3" hdir="116.4" />
+	</layer>
+</krpano>

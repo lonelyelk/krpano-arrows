@@ -1,0 +1,144 @@
+<!-- krpano plugin page template -->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta http-equiv="imagetoolbar" content="no" />
+	<meta name="format-detection" content="telephone=no" />
+	<link rel="stylesheet" type="text/css" href="design.css"/>
+	<link rel="stylesheet" type="text/css" href="plugin.css"/>
+</head>
+<body>	
+	<div id="krpano_root">
+		<div id="krpano_headerwrapper">
+			<div id="krpano_header">
+				<div id="krpano_langsel">&nbsp;</div>
+				<div id="krpano_mainmenu">&nbsp;</div>
+			</div>
+		</div>
+		<div>
+			<div id="krpano_imagebar"></div>
+			<div id="krpano_logo"></div>
+		</div>
+		<div id="krpano_imagebar_space"></div>
+		<div id="krpano_contentwrapper">
+			<div id="krpano_content">
+				<div id="krpano_contentnav">
+					<h2><a href="#top" class="selflink">Plugins</a></h2>
+				</div>
+
+				<a name="top"></a>
+				<div id="krpano_contenttext">			
+<!-- USER CONTENT STARTS HERE -->	
+
+	<h1>Arrows Plugin
+		<span class="pluginfilename">arrows.xml</span>
+		<span class="flashhtml5">for Flash and HTML5</span>
+		<div class="pluginautor">by Sergey Kruk - sergey.kruk@gmail.com</div>
+	</h1>
+	
+	<div class="paragraph">
+		<h2><a name="description" href="#description" class="selflink">Description</a></h2>
+		Inspired by a streetview. This plugin creates a hotspot that is shaped like an arrow or any other
+		flat shape and looks like it points form a point in front of a viewer to a specified direction.
+		Under the hood it is a hotspot that is redrawn on viewchange event. Hotspot is used to profit
+		from already exisitng customisation possibilities and also to use any future polygon features like
+		round corners for example if they come in any future version.
+	</div>
+	
+	<div class="paragraph">
+		<h2><a name="download" href="#download" class="selflink">Download</a></h2>
+		
+		<div class="dlitem">
+			<a href="arrows.zip">arrows.zip</a>&nbsp; <small>(plugin and example included, 122kb)</small><br/>
+		</div>
+	</div>
+
+	<div class="paragraph">
+		<h2><a name="forum" href="#forum" class="selflink">krpano Forum Discussion Thread</a></h2>
+
+		<a href="#">Arrows Plugin Thread</a>
+	</div>
+
+	<div class="paragraph">
+		<h2><a name="syntax" href="#syntax" class="selflink">Syntax / XML Usage Example</a></h2>
+
+		<pre class="xmlpre">&lt;<a href="../../../docu/xml/#include">include</a> <a href="../../../docu/xml/#include.url">url</a>="arrows.xml" /&gt;
+
+&lt;<a href="../../../docu/xml/#layer">layer</a> <a href="../../../docu/xml/#layer.name">name</a>="connections" &gt;
+    &lt;<a href="#connection" class="pluginattrib">connection</a> <a href="#connection.name" class="pluginattrib">name</a>="scene2" 
+                <a href="#connection.hdir" class="pluginattrib">hdir</a>="23.3"
+                /&gt;
+    ...
+&lt;layer&gt;</pre>
+	</div>
+
+	<div class="xmlnodedesc">
+		<a name="connection" href="#connection" class="selflink">&lt;connection&gt;</a>
+		<div class="xmlnodetext">
+			This is a placeholder for all the attributes and parameters that will be
+			transformed into arrow-shaped (or any other shape) hotspot on the fly.
+			<table class="xmlattrdoc">
+				<tbody>
+					<tr class="xmlattrdocdesc" style="diplay: table-row">
+						<td colspan="2">Attribute name</td>
+						<td>Type</td>
+						<td>Default value</td>
+					</tr>
+					<tr style="diplay: table-row">
+						<th colspan="2"><a name="connection.name" href="#connection.name" class="selflink">name</a></th>
+						<th>String</th>
+						<th>N/A</th>
+					</tr>
+					<tr style="diplay: table-row">
+						<td colspan="4">This value must be defined. If onclick attribute is not defined on connection tag
+						and connection is not set to non-interactive, hotspot will try to load a scene with the same name.
+						If this value is not defined no arrow shows up due to connection tags not being recognized as an array.</td>
+					</tr>
+					<tr class="xmlattrdocdesc" style="diplay: table-row">
+						<td colspan="2">Attribute name</td>
+						<td>Type</td>
+						<td>Default value</td>
+					</tr>
+					<tr style="diplay: table-row">
+						<th colspan="2"><a name="connection.hdir" href="#connection.hdir" class="selflink">hdir</a></th>
+						<th>Number</th>
+						<th>N/A</th>
+					</tr>
+					<tr style="diplay: table-row">
+						<td colspan="4">Azimuth of dirrection to point arrow to in degrees. This value must be defined.</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div class="paragraph">
+		<a name="example" href="#example" class="selflink">Example</a>
+		<script>
+			function showexample() 
+			{
+				var iframe = '<iframe id="ccexample" name="ccframe" src="example/example.html" width="100%"  height="300" scrolling="no" marginheight="0" marginwidth="0" frameborder="0"></iframe>';
+				document.getElementById("example").innerHTML = iframe;
+			}
+		</script>
+
+		<div id="example" onclick="showexample();" style="width:100%;height:300px;color:white;background-color:black;border:1px solid gray;cursor:pointer;">
+			<table width="100%" height="100%" style="color:white;">
+				<tr valign="middle"><td><center><b>CLICK TO VIEW EXAMPLE</b></center></td></tr>
+			</table>
+		</div>
+	</div>
+
+<!-- USER CONTENT ENDS HERE -->
+				</div>
+			</div>
+		</div>
+		<div id="krpano_footerwrapper">
+			<div id="krpano_footer">
+				<table border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td align="right">Copyright &copy; 2015 krpano.com</td></tr></tbody></table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

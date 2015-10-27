@@ -1,0 +1,32 @@
+{
+  "name": "krpano-arrows",
+  "version": "1.0.0",
+  "description": "Flat directional arrows projected in 3d for krpano player.",
+  "main": "web-server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lonelyelk/krpano-arrows.git"
+  },
+  "keywords": [
+    "krpano",
+    "projection",
+    "plugin",
+    "arrow",
+    "3d"
+  ],
+  "author": "Sergey Kruk",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/lonelyelk/krpano-arrows/issues"
+  },
+  "homepage": "https://github.com/lonelyelk/krpano-arrows#readme",
+  "devDependencies": {
+    "event-stream": "^3.3.2",
+    "gulp": "^3.9.0",
+    "gulp-pretty-data": "^0.1.1",
+    "gulp-zip": "^3.0.2"
+  }
+}
