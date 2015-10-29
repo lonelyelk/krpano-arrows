@@ -18,7 +18,7 @@ For more details check out documentation or clone the repo.
 
 When plugin page will ba available on [krpano.com](http://krpano.com) there will be a link here.
 Otherwise you can follow development guide to setup local server and read documentation offline
-on [localhost](http://localhost:8244/plugin-page/plugin.html)
+on [localhost](http://localhost:8244/arrows/plugin.html)
 
 ## Development
 

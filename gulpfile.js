@@ -19,14 +19,14 @@ gulp.task('xml', function () {
 	return gulp.src('dev/arrows.xml')
 		.pipe(prettyData({type: 'minify'}))
 		.pipe(minifyAction())
-		.pipe(gulp.dest('plugin-page/example/'));
+		.pipe(gulp.dest('arrows/example/'));
 });
 
 // Create downloadable zip for plugin page
 gulp.task('zip', function () {
-	return gulp.src(['plugin-page/**', '!plugin-page/*.zip'], {base: '.'})
+	return gulp.src(['arrows/**', '!arrows/*.zip'], {base: '.'})
 		.pipe(zip('arrows.zip'))
-		.pipe(gulp.dest('plugin-page/'));
+		.pipe(gulp.dest('arrows/'));
 });
 
 // Minify xml when modified

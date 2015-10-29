@@ -2,7 +2,7 @@
 	<include url="arrows.xml" />
 	<view fov="90" fovmin="60" fovmax="120" />
 	<image>
-		<cubestrip url="../plugin-page/example/pano.jpg" />
+		<cubestrip url="../arrows/example/pano.jpg" />
 	</image>
 	<layer name="custom-arrow-shape">
 		<arrow>
