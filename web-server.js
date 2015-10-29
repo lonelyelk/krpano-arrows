@@ -30,7 +30,7 @@ fs.readFile(filePath, function(error, content) {
 	if (error) {
 		switch (error.code) {
 			case 'EISDIR':
-				response.writeHead(302, { 'Location': './plugin-page/plugin.html' });
+				response.writeHead(302, { 'Location': './dev/index.html' });
 				response.end();
 				break;
 			case 'ENOENT':
@@ -48,4 +48,4 @@ fs.readFile(filePath, function(error, content) {
 });
 
 }).listen(8244);
-console.log('Server running at http://127.0.0.1:8244/');
+console.log('Server running at http://localhost:8244/');

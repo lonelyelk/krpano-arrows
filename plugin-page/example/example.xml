@@ -4,8 +4,27 @@
 	<image>
 		<cubestrip url="pano.jpg" />
 	</image>
+	<layer name="custom-arrow-shape">
+		<arrow>
+			<point name="p0" x="0" y="60" />
+			<point name="p1" x="-10" y="47" />
+			<point name="p2" x="-5" y="47" />
+			<point name="p3" x="-5" y="40" />
+			<point name="p4" x="5" y="40" />
+			<point name="p5" x="5" y="47" />
+			<point name="p6" x="10" y="47" />
+			<center dist="180" shadowdrop="0.35">
+				<functionv>
+					<point name="p0" vlookat="-90" posv="-90" />
+					<point name="p1" vlookat="0" posv="16" />
+					<point name="p2" vlookat="90" posv="90" />
+				</functionv>
+			</center>
+		</arrow>
+	</layer>
+	<style name="custom-arrow" fillcolor="0xd7d7d7" fillalpha="1.0" bordercolor="0x333366" borderalpha="1.0" borderwidth="2.0" onover="set(fillcolor,0xffffff);set(bordercolor,0x5555dd);set(borderwidth,3.0);" onout="set(fillcolor,0xd7d7d7);set(bordercolor,0x333366);set(borderwidth,2.0);" zorder="50" keep="false" />
 	<layer name="connections">
 		<connection name="scene2" hdir="25.0" />
-		<connection name="scene3" hdir="116.4" />
+		<connection name="scene3" hdir="116.4" shape="custom-arrow-shape" arrowstyle="custom-arrow" onclick="set(fillcolor,0xffd7d7);set(bordercolor,0x993333);" />
 	</layer>
 </krpano>

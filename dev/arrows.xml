@@ -7,7 +7,12 @@
 			<point name="p1" x="-9" y="35" />
 			<point name="p2" x="0" y="57" />
 			<point name="p3" x="9" y="35" />
-			<center dist="180" posv="16" posvs="16.35" />
+			<center dist="180" shadowdrop="0.35">
+				<functionv>
+					<point name="p0" vlookat="0" posv="16" />
+					<point name="p1" vlookat="90" posv="90" />
+				</functionv>
+			</center>
 		</arrow>
 	</layer>
 	<action name="addHotSpotWithStyle">
@@ -30,7 +35,7 @@
 			if(layer[connections].connection[%1].onclick === null,
 				txtadd(hotspot[%1].onclick, 'loadscene(', %1, ', null, KEEPVIEW, BLEND(0.2));');
 			,
-				set(hotspot[%1].onclick, layer[connections].connection[%1].onclick);
+				copy(hotspot[%1].onclick, layer[connections].connection[%1].onclick);
 			);
 		);
 	</action>
@@ -42,10 +47,64 @@
 		mul(fr, deg2rad);
 		Math.sin(sfr, fr);
 		Math.cos(cfr, fr);
-		mul(basev, layer[%3].arrow.center.posv, deg2rad);
+		set(ltv, null);
+		set(gtv, null);
+		set(ltposv, null);
+		set(gtposv, null);
+		if(layer[%3].arrow.center.functionv === null,
+			copy(fptcnt, layer[default-arrow-shape].arrow.center.functionv.point.count);
+		,
+			copy(fptcnt, layer[%3].arrow.center.functionv.point.count);
+		);
+		for(set(fpt, 0), fpt LT fptcnt, inc(fpt),
+			if(layer[%3].arrow.center.functionv === null,
+				copy(vn, layer[default-arrow-shape].arrow.center.functionv.point[get(fpt)].vlookat);
+				copy(posvn, layer[default-arrow-shape].arrow.center.functionv.point[get(fpt)].posv);
+			,
+				copy(vn, layer[%3].arrow.center.functionv.point[get(fpt)].vlookat);
+				copy(posvn, layer[%3].arrow.center.functionv.point[get(fpt)].posv);
+			);
+			if(vn LT view.vlookat,
+				if(ltv === null,
+					copy(ltv, vn);
+					copy(ltposv, posvn);
+				,
+					if(vn GT ltv,
+						copy(ltv, vn);
+						copy(ltposv, posvn);
+					);
+				);
+			,
+				if(gtv === null,
+					copy(gtv, vn);
+					copy(gtposv, posvn);
+				,
+					if(vn LT gtv,
+						copy(gtv, vn);
+						copy(gtposv, posvn);
+					);
+				);
+			);
+		);
+		if(gtv === null,
+			copy(posv, ltposv);
+		,
+			if(ltv === null,
+				copy(posv, gtposv);
+			,
+				sub(diff, gtv, ltv);
+				sub(posv, gtposv, ltposv);
+				div(posv, diff);
+				sub(diff, view.vlookat, ltv);
+				mul(posv, diff);
+				add(posv, ltposv);
+			);
+		);
+		add(posvs, posv, layer[%3].arrow.center.shadowdrop);
+		mul(basev, posv, deg2rad);
 		Math.sin(basev);
 		mul(basev, layer[%3].arrow.center.dist);
-		mul(basevs, layer[%3].arrow.center.posvs, deg2rad);
+		mul(basevs, posvs, deg2rad);
 		Math.sin(basevs);
 		mul(basevs, layer[%3].arrow.center.dist);
 		for(set(num, 0), num LT layer[%3].arrow.point.count, inc(num),
@@ -55,7 +114,10 @@
 			mul(cry, layer[%3].arrow.point[get(num)].y, cfr);
 			mul(cry1, layer[%3].arrow.point[get(num)].x, sfr);
 			add(cry, cry1);
-			add(cry, layer[%3].arrow.center.dist);
+			mul(cry1, posv, deg2rad);
+			Math.cos(cry1);
+			mul(cry1, layer[%3].arrow.center.dist);
+			add(cry, cry1);
 			Math.atan2(ph, crx, cry);
 			div(ph, deg2rad);
 			add(hotspot[get(sh)].point[get(num)].ath, ph, view.hlookat);

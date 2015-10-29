@@ -29,4 +29,10 @@ gulp.task('zip', function () {
 		.pipe(gulp.dest('plugin-page/'));
 });
 
+// Minify xml when modified
+gulp.task('watch', function () {
+	gulp.watch('dev/arrows.xml', ['xml']);
+});
+
 gulp.task('make', ['xml', 'zip']);
+gulp.task('default', ['watch']);

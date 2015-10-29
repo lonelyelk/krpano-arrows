@@ -50,7 +50,7 @@
 		<h2><a name="download" href="#download" class="selflink">Download</a></h2>
 		
 		<div class="dlitem">
-			<a href="arrows.zip">arrows.zip</a>&nbsp; <small>(plugin and example included, 122kb)</small><br/>
+			<a href="arrows.zip">arrows.zip</a>&nbsp; <small>(plugin and example included, 343kb)</small><br/>
 		</div>
 	</div>
 
@@ -68,9 +68,29 @@
 &lt;<a href="../../../docu/xml/#layer">layer</a> <a href="../../../docu/xml/#layer.name">name</a>="connections" &gt;
     &lt;<a href="#connection" class="pluginattrib">connection</a> <a href="#connection.name" class="pluginattrib">name</a>="scene2" 
                 <a href="#connection.hdir" class="pluginattrib">hdir</a>="23.3"
+                <a href="#connection.arrowstyle" class="pluginattrib">arrowstyle</a>="default-arrow"
+                <a href="#connection.shadowstyle" class="pluginattrib">shadowstyle</a>="default-shadow"
+                <a href="#connection.onclick" class="pluginattrib">onclick</a>="loadscene(%name, null, KEEPVIEW, BLEND(0.2));"
+                <a href="#connection.shape" class="pluginattrib">shape</a>="default-arrow-shape"
                 /&gt;
     ...
-&lt;layer&gt;</pre>
+&lt;layer&gt;
+
+&lt;layer name="my-arrow-shape"&gt;         &lt;!-- optional --&gt;
+    &lt;<a href="#arrow" class="pluginattrib">arrow</a>&gt;
+        &lt;point name="p0" x="0" y="40" /&gt;
+        &lt;point name="p1" x="-13" y="35" /&gt;
+        &lt;point name="p2" x="0" y="57" /&gt;
+        &lt;point name="p3" x="13" y="35" /&gt;
+        &lt;<a href="#center" class="pluginattrib">center</a> <a href="#center.dist" class="pluginattrib">dist</a>="180" <a href="#center.shadowdrop" class="pluginattrib">shadowdrop</a>="0.35"&gt;
+            &lt;<a href="#functionv" class="pluginattrib">functionv</a>&gt;               &lt;!-- even more optional --&gt;
+                &lt;point name="p0" vlookat="0" posv="16" /&gt;
+                &lt;point name="p1" vlookat="90" posv="90" /&gt;
+            &lt;/functionv&gt;
+        &lt;/center&gt;
+    &lt;/arrow&gt;
+&lt;/layer&gt;
+</pre>
 	</div>
 
 	<div class="xmlnodedesc">
@@ -108,8 +128,124 @@
 					<tr style="diplay: table-row">
 						<td colspan="4">Azimuth of dirrection to point arrow to in degrees. This value must be defined.</td>
 					</tr>
+					<tr class="xmlattrdocdesc" style="diplay: table-row">
+						<td colspan="2">Attribute name</td>
+						<td>Type</td>
+						<td>Default value</td>
+					</tr>
+					<tr style="diplay: table-row">
+						<th colspan="2"><a name="connection.arrowstyle" href="#connection.arrowstyle" class="selflink">arrowstyle</a></th>
+						<th>String</th>
+						<th>default-arrow</th>
+					</tr>
+					<tr style="diplay: table-row">
+						<td colspan="4">Name of a <a href="../../../docu/xml/#style">style</a> that can be applied to a polygonal hotspot.
+						Will be used for arrow construction. Always set <a href="../../../docu/xml/#hotspot.zorder">zorder</a> &gt; 0
+						to avoid it being covered by a shadow.</td>
+					</tr>
+					<tr class="xmlattrdocdesc" style="diplay: table-row">
+						<td colspan="2">Attribute name</td>
+						<td>Type</td>
+						<td>Default value</td>
+					</tr>
+					<tr style="diplay: table-row">
+						<th colspan="2"><a name="connection.shadowstyle" href="#connection.shadowstyle" class="selflink">shadowstyle</a></th>
+						<th>String</th>
+						<th>default-shadow</th>
+					</tr>
+					<tr style="diplay: table-row">
+						<td colspan="4">Name of a <a href="../../../docu/xml/#style">style</a> that can be applied to a polygonal hotspot.
+						Will be used for shadow construction. Always set <a href="../../../docu/xml/#hotspot.zorder">zorder</a> = 0
+						to avoid it covering arrows.</td>
+					</tr>
+					<tr class="xmlattrdocdesc" style="diplay: table-row">
+						<td colspan="2">Attribute name</td>
+						<td>Type</td>
+						<td>Default value</td>
+					</tr>
+					<tr style="diplay: table-row">
+						<th colspan="2"><a name="connection.onclick" href="#connection.onclick" class="selflink">onclick</a></th>
+						<th>String</th>
+						<th>loadscene(%name, null, KEEPVIEW, BLEND(0.2));</th>
+					</tr>
+					<tr style="diplay: table-row">
+						<td colspan="4">Same as <a href="../../../docu/xml/#hotspot.onclick">hotspot.onclick</a>.</td>
+					</tr>
+					<tr class="xmlattrdocdesc" style="diplay: table-row">
+						<td colspan="2">Attribute name</td>
+						<td>Type</td>
+						<td>Default value</td>
+					</tr>
+					<tr style="diplay: table-row">
+						<th colspan="2"><a name="connection.shape" href="#connection.shape" class="selflink">shape</a></th>
+						<th>String</th>
+						<th>default-arrow-shape</th>
+					</tr>
+					<tr style="diplay: table-row">
+						<td colspan="4">Name of a layer with arrow shape description.</td>
+					</tr>
 				</tbody>
 			</table>
+		</div>
+	</div>
+	<div class="xmlnodedesc">
+		<a name="arrow" href="#arrow" class="selflink">&lt;arrow&gt;</a>
+		<div class="xmlnodetext">
+			This is totally optional tag. You can avoid using this tag at all if you are content with the default shape.<br><br>
+			This is a placeholder for flat pointer projection shape. It must contain several &lt;point&gt; tags. Each point must have name attribute.
+			This is for krpano to transform point tag into an array. Names themselves don't matter, each point should have a unique name though.
+			Also arrow tag must contain one <a href="#center" class="pluginattrib">&lt;center&gt;</a> tag.<br><br>
+			Points describe flat arrow such as point x&nbsp;=&nbsp;0,&nbsp;y&nbsp;=&nbsp;0 is the center of rotation for the arrow and y axis (x&nbsp;=&nbsp;0) is
+			where it points.
+		</div>
+	</div>
+	<div class="xmlnodedesc">
+		<a name="center" href="#center" class="selflink">&lt;center&gt;</a>
+		<div class="xmlnodetext">
+			This tag must be present in <a href="#arrow" class="pluginattrib">&lt;arrow&gt;</a> tag. This describes the behaviour of the center of rotation
+			of all arrows of this shape. It has two required attributes and one optional <a href="#functionv" class="pluginattrib">&lt;functionv&gt;</a> tag.
+			<table class="xmlattrdoc">
+				<tbody>
+					<tr class="xmlattrdocdesc" style="diplay: table-row">
+						<td colspan="2">Attribute name</td>
+						<td>Type</td>
+						<td>Default value</td>
+					</tr>
+					<tr style="diplay: table-row">
+						<th colspan="2"><a name="center.dist" href="#center.dist" class="selflink">dist</a></th>
+						<th>Number</th>
+						<th>N/A</th>
+					</tr>
+					<tr style="diplay: table-row">
+						<td colspan="4">This is virtual distance from the center of panoramic sphere to a point of revolution of the arrow. Its physical sence is
+						pretty vague but it works like a scale factor. Greater it is — smaller are arrows. In relation with point coordinates it helps to get just the right
+						shape and size. For my default shape I use 180, but this is not a default value if you write this tag yourself. You must specify it.</td>
+					</tr>
+					<tr class="xmlattrdocdesc" style="diplay: table-row">
+						<td colspan="2">Attribute name</td>
+						<td>Type</td>
+						<td>Default value</td>
+					</tr>
+					<tr style="diplay: table-row">
+						<th colspan="2"><a name="center.shadowdrop" href="#center.shadowdrop" class="selflink">shadowdrop</a></th>
+						<th>Number</th>
+						<th>N/A</th>
+					</tr>
+					<tr style="diplay: table-row">
+						<td colspan="4">This is how much shadow shape is lower than pointer shape in view.vlookat degrees. For my default shape I use 0.35, but this is not a default
+						value if you write this tag yourself. You must specify it.</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="xmlnodedesc">
+		<a name="functionv" href="#functionv" class="selflink">&lt;functionv&gt;</a>
+		<div class="xmlnodetext">
+			Even if you specify arrow shape you don't have to use this tag. This tag describes how center of arrow revolution is placed depending on your <a href="../../../docu/xml/#view.vlookat">view.vlookat</a> angle.
+			With the same sign (0 at horizon, 90 downward, -90 upward). Inside &lt;point&gt; tags describe a piecewise linear function. What it says above is: when I look horizontally and above, I want the center of revolution
+			to be slightly lower than the horizon (16 degrees lower); when I look down, I want the center of revolution to be directly under me. It is linear in between. This is the default behaviur. For another example
+			see <a href="example/example.xml">example.xml</a>.
 		</div>
 	</div>
 
