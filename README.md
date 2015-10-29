@@ -1,6 +1,6 @@
 # Arrows Plugin for krpano viewer
 
-You only need the compacted version of arrows.xml file. You can get it [here](). After that you can:
+You only need the compacted version of arrows.xml file. You can get it [here](https://raw.githubusercontent.com/lonelyelk/krpano-arrows/master/arrows/example/arrows.xml). After that you can:
 
 ```xml
 <krpano>
@@ -12,6 +12,7 @@ You only need the compacted version of arrows.xml file. You can get it [here]().
 </krpano>
 ```
 
+Full plugin with examples and documentation is packed in [arrows.zip](https://github.com/lonelyelk/krpano-arrows/raw/master/arrows/arrows.zip).
 For more details check out documentation or clone the repo.
 
 ## Documentation
