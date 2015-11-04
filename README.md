@@ -17,7 +17,7 @@ For more details check out documentation or clone the repo.
 
 ## Documentation
 
-When plugin page will ba available on [krpano.com](http://krpano.com) there will be a link here.
+Description and documentantion is available on the [plugin page](http://krpano.com/plugins/userplugins/arrows/#top) at [krpano.com](http://krpano.com).
 Otherwise you can follow development guide to setup local server and read documentation offline
 on [localhost](http://localhost:8244/arrows/plugin.html)
 
