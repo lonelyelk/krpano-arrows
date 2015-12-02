@@ -38,6 +38,7 @@
 				copy(hotspot[%1].onclick, layer[connections].connection[%1].onclick);
 			);
 		);
+		copy(hotspot[get(sh)].visible, hotspot[%1].visible);
 	</action>
 	<action name="drawArrow">
 		txtadd(sh, %1, 'shadow');
@@ -86,10 +87,10 @@
 				);
 			);
 		);
-		if(gtv === null,
+		if(gtv == null,
 			copy(posv, ltposv);
 		,
-			if(ltv === null,
+			if(ltv == null,
 				copy(posv, gtposv);
 			,
 				sub(diff, gtv, ltv);
@@ -142,5 +143,6 @@
 			drawArrow(get(layer[connections].connection[get(i)].name), get(layer[connections].connection[get(i)].hdir), get(shape));
 		);
 	</action>
-	<events onviewchange="updateConnections();" />
+	<events onloadcomplete="set(allowarrows, 1);" />
+	<events onviewchange="if(allowarrows == 1, updateConnections(););" />
 </krpano>
