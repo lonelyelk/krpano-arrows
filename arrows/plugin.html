@@ -117,7 +117,7 @@
 						<th>N/A</th>
 					</tr>
 					<tr style="diplay: table-row">
-						<td colspan="4">This value must be defined. If onclick attribute is not defined on connection tag
+						<td colspan="4">This value must be defined. If <a href="#connection.onclick">onclick</a> attribute is not defined on connection tag
 						and connection is not set to non-interactive, hotspot will try to load a scene with the same name.
 						If this value is not defined no arrow shows up due to connection tags not being recognized as an array.</td>
 					</tr>
@@ -175,7 +175,11 @@
 						<th>loadscene(%name, null, KEEPVIEW, BLEND(0.2));</th>
 					</tr>
 					<tr style="diplay: table-row">
-						<td colspan="4">Same as <a href="../../../docu/xml/#hotspot.onclick">hotspot.onclick</a>.</td>
+						<td colspan="4">Same as <a href="../../../docu/xml/#hotspot.onclick">hotspot.onclick</a>. If this attribute
+						is not defined, than <a href="#connection.name">name</a> attribute is used and default action is assigned:
+						loadscene(%name, null, KEEPVIEW, BLEND(0.2)); If you don't want any reaction on click <b>onclick=""</b> must be
+						specified. It is also useful to set <a href="../../../docu/xml/#hotspot.handcursor">handcursor</a>="false"
+						on your arrow <a href="../../../docu/xml/#style">style</a> tag in that case.</td>
 					</tr>
 					<tr class="xmlattrdocdesc" style="diplay: table-row">
 						<td colspan="2">Attribute name</td>
@@ -189,6 +193,19 @@
 					</tr>
 					<tr style="diplay: table-row">
 						<td colspan="4">Name of a layer with arrow shape description.</td>
+					</tr>
+					<tr class="xmlattrdocdesc" style="diplay: table-row">
+						<td colspan="2">Attribute name</td>
+						<td>Type</td>
+						<td>Default value</td>
+					</tr>
+					<tr style="diplay: table-row">
+						<th colspan="2"><a name="connection.dropshadow" href="#connection.dropshadow" class="selflink">dropshadow</a></th>
+						<th>Boolean</th>
+						<th>true</th>
+					</tr>
+					<tr style="diplay: table-row">
+						<td colspan="4">This attribute specifies if a shadow must appear under this connection shape. This attribute can be specified in a corresponding <a href="../../../docu/xml/#style">style</a> tag.</td>
 					</tr>
 				</tbody>
 			</table>

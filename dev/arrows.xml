@@ -1,5 +1,5 @@
 <krpano>
-	<style name="default-shadow" fillcolor="0x000000" fillalpha="0.6" bordercolor="0x000000" borderalpha="0.6" borderwidth="2.0" zorder="0" keep="false" />
+	<style name="default-shadow" fillcolor="0x000000" fillalpha="0.6" bordercolor="0x000000" borderalpha="0.6" borderwidth="2.0" zorder="0" keep="false" handcursor="false" />
 	<style name="default-arrow" fillcolor="0xd7d7d7" fillalpha="1.0" bordercolor="0xd7d7d7" borderalpha="1.0" borderwidth="2.0" onover="set(fillcolor,0xffffff);set(bordercolor,0xffffff);" onout="set(fillcolor,0xd7d7d7);set(bordercolor,0xd7d7d7);" zorder="50" keep="false" />
 	<layer name="default-arrow-shape">
 		<arrow>
@@ -22,10 +22,19 @@
 	<action name="addHotSpotIfMissing">
 		txtadd(sh, %1, 'shadow');
 		if(hotspot[%1].style === null,
-			if(layer[connections].connection[%1].shadowstyle === null,
-				addHotSpotWithStyle(get(sh), 'default-shadow');
+			set(dropshadow, true);
+			if(layer[connections].connection[%1].dropshadow === false, set(dropshadow, false));
+			if(layer[connections].connection[%1].arrowstyle === null,
+				if(style[default-arrow].dropshadow === false, set(dropshadow, false));
 			,
-				addHotSpotWithStyle(get(sh), get(layer[connections].connection[%1].shadowstyle));
+				if(style[get(layer[connections].connection[%1].arrowstyle)].dropshadow === false, set(dropshadow, false));
+			);
+			if(dropshadow,
+				if(layer[connections].connection[%1].shadowstyle === null,
+					addHotSpotWithStyle(get(sh), 'default-shadow');
+				,
+					addHotSpotWithStyle(get(sh), get(layer[connections].connection[%1].shadowstyle));
+				);
 			);
 			if(layer[connections].connection[%1].arrowstyle === null,
 				addHotSpotWithStyle(%1, 'default-arrow');
@@ -121,14 +130,18 @@
 			add(cry, cry1);
 			Math.atan2(ph, crx, cry);
 			div(ph, deg2rad);
-			add(hotspot[get(sh)].point[get(num)].ath, ph, view.hlookat);
+			ifnot(hotspot[get(sh)].style === null,
+				add(hotspot[get(sh)].point[get(num)].ath, ph, view.hlookat);
+			);
 			add(hotspot[%1].point[get(num)].ath, ph, view.hlookat);
 			mul(crx1, crx, crx);
 			mul(distc, cry, cry);
 			add(distc, crx1);
 			Math.sqrt(distc);
 			Math.atan2(pv, basevs, distc);
-			div(hotspot[get(sh)].point[get(num)].atv, pv, deg2rad);
+			ifnot(hotspot[get(sh)].style === null,
+				div(hotspot[get(sh)].point[get(num)].atv, pv, deg2rad);
+			);
 			Math.atan2(pv, basev, distc);
 			div(hotspot[%1].point[get(num)].atv, pv, deg2rad);
 		);

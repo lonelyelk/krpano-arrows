@@ -22,8 +22,18 @@
 			</center>
 		</arrow>
 	</layer>
+	<layer name="line-shape">
+		<arrow>
+			<point name="p0" x="0" y="60000" />
+			<point name="p1" x="-5" y="0" />
+			<point name="p2" x="5" y="0" />
+			<center dist="180" />
+		</arrow>
+	</layer>
 	<style name="custom-arrow" fillcolor="0xd7d7d7" fillalpha="1.0" bordercolor="0x333366" borderalpha="1.0" borderwidth="2.0" onover="set(fillcolor,0xffffff);set(bordercolor,0x5555dd);set(borderwidth,3.0);" onout="set(fillcolor,0xd7d7d7);set(bordercolor,0x333366);set(borderwidth,2.0);" zorder="50" keep="false" />
+	<style name="myline" fillcolor="0x00d700" fillalpha="0.7" bordercolor="0x00d700" borderalpha="0" zorder="0" keep="false" handcursor="false" dropshadow="false" />
 	<layer name="connections">
+		<connection name="line" hdir="25.0" shape="line-shape" arrowstyle="myline" onclick="" />
 		<connection name="scene2" hdir="25.0" />
 		<connection name="scene3" hdir="116.4" shape="custom-arrow-shape" arrowstyle="custom-arrow" onclick="set(fillcolor,0xffd7d7);set(bordercolor,0x993333);" />
 	</layer>
