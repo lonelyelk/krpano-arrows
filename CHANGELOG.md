@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.2.0
+**New features:**
+- Attribute *dropshadow* renamed to *shadow*.
+
 ## 1.1.0
 **New features:**
 - Implemented *dropshadow* boolean attribute to make shadow optional.
