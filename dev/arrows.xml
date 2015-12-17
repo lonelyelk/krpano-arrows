@@ -22,14 +22,14 @@
 	<action name="addHotSpotIfMissing">
 		txtadd(sh, %1, 'shadow');
 		if(hotspot[%1].style === null,
-			set(dropshadow, true);
-			if(layer[connections].connection[%1].dropshadow === false, set(dropshadow, false));
+			set(shadow, true);
+			if(layer[connections].connection[%1].shadow === false, set(shadow, false));
 			if(layer[connections].connection[%1].arrowstyle === null,
-				if(style[default-arrow].dropshadow === false, set(dropshadow, false));
+				if(style[default-arrow].shadow === false, set(shadow, false));
 			,
-				if(style[get(layer[connections].connection[%1].arrowstyle)].dropshadow === false, set(dropshadow, false));
+				if(style[get(layer[connections].connection[%1].arrowstyle)].shadow === false, set(shadow, false));
 			);
-			if(dropshadow,
+			if(shadow,
 				if(layer[connections].connection[%1].shadowstyle === null,
 					addHotSpotWithStyle(get(sh), 'default-shadow');
 				,
