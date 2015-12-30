@@ -4,7 +4,7 @@
 	<image>
 		<cubestrip url="../arrows/example/pano.jpg" />
 	</image>
-	<layer name="custom-arrow-shape">
+	<layer name="custom-arrow-shape" keep="true">
 		<arrow>
 			<point name="p0" x="0" y="60" />
 			<point name="p1" x="-10" y="47" />
@@ -22,7 +22,7 @@
 			</center>
 		</arrow>
 	</layer>
-	<layer name="line-shape">
+	<layer name="line-shape" keep="true">
 		<arrow>
 			<point name="p0" x="0" y="60000" />
 			<point name="p1" x="-5" y="0" />

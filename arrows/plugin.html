@@ -83,7 +83,7 @@
     ...
 &lt;layer&gt;
 
-&lt;layer name="my-arrow-shape"&gt;         &lt;!-- optional --&gt;
+&lt;layer name="my-arrow-shape" keep="true"&gt;         &lt;!-- optional --&gt;
     &lt;<a href="#arrow" class="pluginattrib">arrow</a>&gt;
         &lt;point name="p0" x="0" y="40" /&gt;
         &lt;point name="p1" x="-13" y="35" /&gt;
@@ -215,7 +215,7 @@
 	<div class="xmlnodedesc">
 		<a name="arrow" href="#arrow" class="selflink">&lt;arrow&gt;</a>
 		<div class="xmlnodetext">
-			This is totally optional tag. You can avoid using this tag at all if you are content with the default shape.<br><br>
+			This is totally optional tag. You can avoid using this tag at all if you are content with the default shape. If you are using multiple scenes the layer tag that contains this arrow tag must have <a href="../../../docu/xml/#layer.keep">keep</a>="true" attribute set.<br><br>
 			This is a placeholder for flat pointer projection shape. It must contain several &lt;point&gt; tags. Each point must have name attribute.
 			This is for krpano to transform point tag into an array. Names themselves don't matter, each point should have a unique name though.
 			Also arrow tag must contain one <a href="#center" class="pluginattrib">&lt;center&gt;</a> tag.<br><br>

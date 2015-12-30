@@ -1,7 +1,7 @@
 <krpano>
 	<style name="default-shadow" fillcolor="0x000000" fillalpha="0.6" bordercolor="0x000000" borderalpha="0.6" borderwidth="2.0" zorder="0" keep="false" handcursor="false" />
 	<style name="default-arrow" fillcolor="0xd7d7d7" fillalpha="1.0" bordercolor="0xd7d7d7" borderalpha="1.0" borderwidth="2.0" onover="set(fillcolor,0xffffff);set(bordercolor,0xffffff);" onout="set(fillcolor,0xd7d7d7);set(bordercolor,0xd7d7d7);" zorder="50" keep="false" />
-	<layer name="default-arrow-shape">
+	<layer name="default-arrow-shape" keep="true">
 		<arrow>
 			<point name="p0" x="0" y="40" />
 			<point name="p1" x="-9" y="35" />

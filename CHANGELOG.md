@@ -1,5 +1,10 @@
 # Change Log
 
+## 1.2.1
+**Fixes:**
+- Fixed issue when arrows won't show up if included outside the scene
+  in multiple scenes xml file.
+
 ## 1.2.0
 **New features:**
 - Attribute *dropshadow* renamed to *shadow*.
