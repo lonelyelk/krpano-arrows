@@ -1,6 +1,6 @@
 {
   "name": "krpano-arrows",
-  "version": "1.0.0",
+  "version": "1.2.2",
   "description": "Flat directional arrows projected in 3d for krpano player.",
   "main": "web-server.js",
   "scripts": {
