@@ -1,5 +1,10 @@
 # Change Log
 
+## 1.2.2
+**Fixes:**
+- Fixed issue when arrows won't show up if events *onloadcomplete* or
+  *onviewchanged* overwritten.
+
 ## 1.2.1
 **Fixes:**
 - Fixed issue when arrows won't show up if included outside the scene
