@@ -156,6 +156,5 @@
 			drawArrow(get(layer[connections].connection[get(i)].name), get(layer[connections].connection[get(i)].hdir), get(shape));
 		);
 	</action>
-	<events onloadcomplete="set(allowarrows, 1);" />
-	<events onviewchange="if(allowarrows == 1, updateConnections(););" />
+	<events name="arrows-update" onloadcomplete="set(allowarrows, 1);" onviewchange="if(allowarrows == 1, updateConnections(););" keep="true" />
 </krpano>
