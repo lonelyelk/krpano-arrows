@@ -1,5 +1,10 @@
 # Change Log
 
+## 1.3.0
+**New feature:**
+- Transfer attributes 'onover', 'onhover', 'onout', 'ondown' and 'onup'
+  from connection tag to generated hotspot.
+
 ## 1.2.2
 **Fixes:**
 - Fixed issue when arrows won't show up if events *onloadcomplete* or
