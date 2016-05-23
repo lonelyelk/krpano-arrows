@@ -46,6 +46,21 @@
 			,
 				copy(hotspot[%1].onclick, layer[connections].connection[%1].onclick);
 			);
+			if(layer[connections].connection[%1].onover !== null,
+				copy(hotspot[%1].onover, layer[connections].connection[%1].onover);
+			);
+			if(layer[connections].connection[%1].onhover !== null,
+				copy(hotspot[%1].onhover, layer[connections].connection[%1].onhover);
+			);
+			if(layer[connections].connection[%1].onout !== null,
+				copy(hotspot[%1].onout, layer[connections].connection[%1].onout);
+			);
+			if(layer[connections].connection[%1].ondown !== null,
+				copy(hotspot[%1].ondown, layer[connections].connection[%1].ondown);
+			);
+			if(layer[connections].connection[%1].onup !== null,
+				copy(hotspot[%1].onup, layer[connections].connection[%1].onup);
+			);
 		);
 		copy(hotspot[get(sh)].visible, hotspot[%1].visible);
 	</action>
@@ -156,5 +171,5 @@
 			drawArrow(get(layer[connections].connection[get(i)].name), get(layer[connections].connection[get(i)].hdir), get(shape));
 		);
 	</action>
-	<events name="arrows-update" onloadcomplete="set(allowarrows, 1);" onviewchange="if(allowarrows == 1, updateConnections(););" keep="true" />
+	<events name="arrows-update" onloadcomplete="set(allowarrows, 1);updateConnections();" onviewchange="if(allowarrows == 1, updateConnections(););" keep="true" />
 </krpano>

@@ -33,8 +33,8 @@
 	<style name="custom-arrow" fillcolor="0xd7d7d7" fillalpha="1.0" bordercolor="0x333366" borderalpha="1.0" borderwidth="2.0" onover="set(fillcolor,0xffffff);set(bordercolor,0x5555dd);set(borderwidth,3.0);" onout="set(fillcolor,0xd7d7d7);set(bordercolor,0x333366);set(borderwidth,2.0);" zorder="50" keep="false" />
 	<style name="myline" fillcolor="0x00d700" fillalpha="0.7" bordercolor="0x00d700" borderalpha="0" zorder="0" keep="false" handcursor="false" shadow="false" />
 	<layer name="connections">
-		<!-- green line without mouse interaction -->
-		<connection name="line" hdir="25.0" shape="line-shape" arrowstyle="myline" onclick="" />
+		<!-- green line without mouse interaction, attributes on.. transfered to hotspot -->
+		<connection name="line" hdir="25.0" shape="line-shape" arrowstyle="myline" onclick="" onover="set(fillcolor,0x00ff00);" onout="set(fillcolor,0x00d700);" />
 		<!-- default arrow tries to change to nonexistent scene -->
 		<connection name="scene2" hdir="25.0" />
 		<!-- custom-shaped arrow with custom onclick reaction -->

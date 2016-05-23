@@ -17,5 +17,13 @@
 	<div id="krpanoDIV" style="width:100%;height:100%;">
 		<script>embedpano({swf:"../arrows/example/krpano.swf", xml:"index.xml", target:"krpanoDIV"});</script>
 	</div>
+	<script type="text/javascript">
+		// test to change hotspot properties dynamically.
+		setTimeout(function () {
+			// event doesn't trigger hotspor redraw for some reason.
+			// document.getElementById('krpanoSWFObject').call('add(layer[connections].connection[scene3].hdir, 90);events.dispatch(onviewchange);');
+			document.getElementById('krpanoSWFObject').call('add(layer[connections].connection[scene3].hdir, 90);add(view.hlookat, 0.000001);');
+		}, 2000);
+	</script>
 </body>
 </html>
