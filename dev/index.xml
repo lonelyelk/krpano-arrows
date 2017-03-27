@@ -34,7 +34,7 @@
 	<style name="myline" fillcolor="0x00d700" fillalpha="0.7" bordercolor="0x00d700" borderalpha="0" zorder="0" keep="false" handcursor="false" shadow="false" />
 	<layer name="connections">
 		<connection name="line" hdir="25.0" shape="line-shape" arrowstyle="myline" onclick="" onover="set(fillcolor,0x00ff00);" onout="set(fillcolor,0x00d700);" />
-		<connection name="scene2" hdir="25.0" />
+		<connection name="scene2" hdir="25.0" vdir="-15.0" />
 		<connection name="scene3" hdir="116.4" shape="custom-arrow-shape" arrowstyle="custom-arrow" onclick="set(fillcolor,0xffd7d7);set(bordercolor,0x993333);" />
 	</layer>
 </krpano>

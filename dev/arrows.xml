@@ -76,18 +76,27 @@
 		set(gtv, null);
 		set(ltposv, null);
 		set(gtposv, null);
-		if(layer[%3].arrow.center.functionv === null,
+		mul(vr, deg2rad, %3);
+		if(vr,
+			sub(vr, 0.0, vr);
+			Math.cos(cvr, vr);
+			Math.sin(svr, vr);
+		,
+			set(cvr, 1.0);
+			set(svr, 0.0);
+		);
+		if(layer[%4].arrow.center.functionv === null,
 			copy(fptcnt, layer[default-arrow-shape].arrow.center.functionv.point.count);
 		,
-			copy(fptcnt, layer[%3].arrow.center.functionv.point.count);
+			copy(fptcnt, layer[%4].arrow.center.functionv.point.count);
 		);
 		for(set(fpt, 0), fpt LT fptcnt, inc(fpt),
-			if(layer[%3].arrow.center.functionv === null,
+			if(layer[%4].arrow.center.functionv === null,
 				copy(vn, layer[default-arrow-shape].arrow.center.functionv.point[get(fpt)].vlookat);
 				copy(posvn, layer[default-arrow-shape].arrow.center.functionv.point[get(fpt)].posv);
 			,
-				copy(vn, layer[%3].arrow.center.functionv.point[get(fpt)].vlookat);
-				copy(posvn, layer[%3].arrow.center.functionv.point[get(fpt)].posv);
+				copy(vn, layer[%4].arrow.center.functionv.point[get(fpt)].vlookat);
+				copy(posvn, layer[%4].arrow.center.functionv.point[get(fpt)].posv);
 			);
 			if(vn LT view.vlookat,
 				if(ltv === null,
@@ -125,23 +134,25 @@
 				add(posv, ltposv);
 			);
 		);
-		add(posvs, posv, layer[%3].arrow.center.shadowdrop);
+		add(posvs, posv, layer[%4].arrow.center.shadowdrop);
 		mul(basev, posv, deg2rad);
 		Math.sin(basev);
-		mul(basev, layer[%3].arrow.center.dist);
+		mul(basev, layer[%4].arrow.center.dist);
 		mul(basevs, posvs, deg2rad);
 		Math.sin(basevs);
-		mul(basevs, layer[%3].arrow.center.dist);
-		for(set(num, 0), num LT layer[%3].arrow.point.count, inc(num),
-			mul(crx, layer[%3].arrow.point[get(num)].x, cfr);
-			mul(crx1, layer[%3].arrow.point[get(num)].y, sfr);
+		mul(basevs, layer[%4].arrow.center.dist);
+		for(set(num, 0), num LT layer[%4].arrow.point.count, inc(num),
+			mul(ly, layer[%4].arrow.point[get(num)].y, cvr);
+			mul(crz, layer[%4].arrow.point[get(num)].y, svr);
+			mul(crx, layer[%4].arrow.point[get(num)].x, cfr);
+			mul(crx1, ly, sfr);
 			sub(crx, crx1);
-			mul(cry, layer[%3].arrow.point[get(num)].y, cfr);
-			mul(cry1, layer[%3].arrow.point[get(num)].x, sfr);
+			mul(cry, ly, cfr);
+			mul(cry1, layer[%4].arrow.point[get(num)].x, sfr);
 			add(cry, cry1);
 			mul(cry1, posv, deg2rad);
 			Math.cos(cry1);
-			mul(cry1, layer[%3].arrow.center.dist);
+			mul(cry1, layer[%4].arrow.center.dist);
 			add(cry, cry1);
 			Math.atan2(ph, crx, cry);
 			div(ph, deg2rad);
@@ -153,11 +164,13 @@
 			mul(distc, cry, cry);
 			add(distc, crx1);
 			Math.sqrt(distc);
-			Math.atan2(pv, basevs, distc);
+			sub(pbasev, basevs, crz);
+			Math.atan2(pv, pbasev, distc);
 			ifnot(hotspot[get(sh)].style === null,
 				div(hotspot[get(sh)].point[get(num)].atv, pv, deg2rad);
 			);
-			Math.atan2(pv, basev, distc);
+			sub(pbasev, basev, crz);
+			Math.atan2(pv, pbasev, distc);
 			div(hotspot[%1].point[get(num)].atv, pv, deg2rad);
 		);
 	</action>
@@ -168,7 +181,7 @@
 			,
 				copy(shape, layer[connections].connection[get(i)].shape);
 			);
-			drawArrow(get(layer[connections].connection[get(i)].name), get(layer[connections].connection[get(i)].hdir), get(shape));
+			drawArrow(get(layer[connections].connection[get(i)].name), get(layer[connections].connection[get(i)].hdir), get(layer[connections].connection[get(i)].vdir), get(shape));
 		);
 	</action>
 	<events name="arrows-update" onloadcomplete="set(allowarrows, 1);updateConnections();" onviewchange="if(allowarrows == 1, updateConnections(););" keep="true" />

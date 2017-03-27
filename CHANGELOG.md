@@ -1,8 +1,12 @@
 # Change Log
 
+## 1.4.0
+**New feature:**
+- Transfer attribute `hdir` for connection to point upwards or downwrads.
+
 ## 1.3.0
 **New feature:**
-- Transfer attributes 'onover', 'onhover', 'onout', 'ondown' and 'onup'
+- Transfer attributes `onover`, `onhover`, `onout`, `ondown` and `onup`
   from connection tag to generated hotspot.
 
 ## 1.2.2

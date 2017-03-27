@@ -50,7 +50,7 @@
 		<h2><a name="download" href="#download" class="selflink">Download</a></h2>
 		
 		<div class="dlitem">
-			<a href="arrows.zip">arrows.zip</a>&nbsp; <small>(plugin and example included, 546kb)</small><br/>
+			<a href="arrows.zip">arrows.zip</a>&nbsp; <small>(plugin and example included, 547kb)</small><br/>
 		</div>
 	</div>
 
@@ -73,7 +73,8 @@
 
 &lt;<a href="../../../docu/xml/#layer">layer</a> <a href="../../../docu/xml/#layer.name">name</a>="connections" &gt;
     &lt;<a href="#connection" class="pluginattrib">connection</a> <a href="#connection.name" class="pluginattrib">name</a>="scene2" 
-                <a href="#connection.hdir" class="pluginattrib">hdir</a>="23.3"
+                <a href="#connection.hdir" class="pluginattrib">hdir</a>="23"
+                <a href="#connection.vdir" class="pluginattrib">vdir</a>="-25"
                 <a href="#connection.arrowstyle" class="pluginattrib">arrowstyle</a>="default-arrow"
                 <a href="#connection.shadowstyle" class="pluginattrib">shadowstyle</a>="default-shadow"
                 <a href="#connection.onclick" class="pluginattrib">onclick</a>="loadscene(%name, null, KEEPVIEW, BLEND(0.2));"
@@ -133,7 +134,20 @@
 						<th>N/A</th>
 					</tr>
 					<tr style="diplay: table-row">
-						<td colspan="4">Azimuth of dirrection to point arrow to in degrees. This value must be defined.</td>
+						<td colspan="4">Azimuth of direction to point arrow to in degrees (yaw angle). This value must be defined.</td>
+					</tr>
+					<tr class="xmlattrdocdesc" style="diplay: table-row">
+						<td colspan="2">Attribute name</td>
+						<td>Type</td>
+						<td>Default value</td>
+					</tr>
+					<tr style="diplay: table-row">
+						<th colspan="2"><a name="connection.vdir" href="#connection.vdir" class="selflink">vdir</a></th>
+						<th>Number</th>
+						<th>0.0</th>
+					</tr>
+					<tr style="diplay: table-row">
+						<td colspan="4">Vertical direction to point arrow to in degrees (pitch angle). Positive angle inclines the arrow down. If not defined considering arrows to be in horizontal plane i.e. vdir=0. This value must be in range -90.0 to 90.0</td>
 					</tr>
 					<tr class="xmlattrdocdesc" style="diplay: table-row">
 						<td colspan="2">Attribute name</td>
